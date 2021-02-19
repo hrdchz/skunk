@@ -1,20 +1,20 @@
 # frozen_string_literal: true
 
-require "rubycritic/cli/options"
-require "rubycritic/cli/application"
+require 'rubycritic/cli/options'
+require 'rubycritic/cli/application'
 
-require "skunk"
-require "skunk/rubycritic/analysed_module"
-require "skunk/cli/options"
-require "skunk/cli/command_factory"
-require "skunk/cli/commands/status_sharer"
+require 'skunk'
+require 'skunk/rubycritic/analysed_module'
+require 'skunk/cli/options'
+require 'skunk/cli/command_factory'
+require 'skunk/cli/commands/status_sharer'
 
 module Skunk
   module Cli
     # Knows how to execute command line commands
     # :reek:InstanceVariableAssumption
     class Application < RubyCritic::Cli::Application
-      COVERAGE_FILE = "coverage/.resultset.json"
+      COVERAGE_FILE = 'coverage/.resultset.json'
 
       def initialize(argv)
         @options = Skunk::Cli::Options.new(argv)
@@ -43,7 +43,7 @@ module Skunk
 
       def warn_coverage_info
         warn "warning: Couldn't find coverage info at #{COVERAGE_FILE}."
-        warn "warning: Having no coverage metrics will make your SkunkScore worse."
+        warn 'warning: Having no coverage metrics will make your SkunkScore worse.'
       end
 
       # :reek:NilCheck
@@ -52,7 +52,7 @@ module Skunk
         if filename.nil?
           $stdout.puts(message)
         else
-          File.open(filename, "a") { |file| file << message }
+          File.open(filename, 'a') { |file| file << message }
         end
       end
     end

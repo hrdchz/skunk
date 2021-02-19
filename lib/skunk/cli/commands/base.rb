@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "rubycritic/commands/base"
-require "skunk/cli/commands/status_reporter"
+require 'rubycritic/commands/base'
+require 'skunk/cli/commands/status_reporter'
 
 module Skunk
   module Cli

@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require 'test_helper'
 
-require "rubycritic/analysers_runner"
-require "skunk/cli/commands/status_reporter"
+require 'rubycritic/analysers_runner'
+require 'skunk/cli/commands/status_reporter'
 
 describe Skunk::Command::StatusReporter do
-  let(:paths) { "samples/rubycritic" }
+  let(:paths) { 'samples/rubycritic' }
 
-  describe "#update_status_message" do
-    let(:output) { File.read("test/samples/console_output.txt") }
+  describe '#update_status_message' do
+    let(:output) { File.read('test/samples/console_output.txt') }
     let(:reporter) { Skunk::Command::StatusReporter.new({}) }
 
     around do |example|
@@ -31,14 +31,14 @@ describe Skunk::Command::StatusReporter do
       example.call
     end
 
-    it "reports the SkunkScore" do
+    it 'reports the SkunkScore' do
       _(reporter.update_status_message).must_include output
       _(reporter.update_status_message).must_include "Generated with Skunk v#{Skunk::VERSION}"
     end
 
     context "When there's nested spec files" do
-      let(:paths) { "samples" }
-      it "reports the SkunkScore" do
+      let(:paths) { 'samples' }
+      it 'reports the SkunkScore' do
         _(reporter.update_status_message).must_include output
         _(reporter.update_status_message).must_include "Generated with Skunk v#{Skunk::VERSION}"
       end

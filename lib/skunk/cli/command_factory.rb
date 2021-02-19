@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "rubycritic/command_factory"
+require 'rubycritic/command_factory'
 
 module Skunk
   module Cli
@@ -13,12 +13,12 @@ module Skunk
       # @param mode
       # @return [Class]
       def self.command_class(mode)
-        mode = mode.to_s.split("_").first.to_sym
+        mode = mode.to_s.split('_').first.to_sym
         if COMMAND_CLASS_MODES.include? mode
           require "skunk/cli/commands/#{mode}"
           Command.const_get(mode.capitalize)
         else
-          require "skunk/cli/commands/default"
+          require 'skunk/cli/commands/default'
           Command::Default
         end
       end

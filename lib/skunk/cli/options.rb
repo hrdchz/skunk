@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "skunk/cli/options/argv"
-require "rubycritic/cli/options/file"
+require 'skunk/cli/options/argv'
+require 'rubycritic/cli/options/file'
 
 module Skunk
   module Cli

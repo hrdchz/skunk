@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require "net/http"
-require "net/https"
-require "json"
+require 'net/http'
+require 'net/https'
+require 'json'
 
-require "skunk/cli/commands/status_reporter"
+require 'skunk/cli/commands/status_reporter'
 
 module Skunk
   module Command
@@ -12,13 +12,13 @@ module Skunk
     class StatusSharer < Skunk::Command::StatusReporter
       attr_reader :status_message
 
-      DEFAULT_URL = "https://skunk.fastruby.io"
+      DEFAULT_URL = 'https://skunk.fastruby.io'
       def status_reporter=(status_reporter)
         self.analysed_modules = status_reporter.analysed_modules
       end
 
       def share
-        return "" if not_sharing?
+        return '' if not_sharing?
 
         response = post_payload
 
@@ -35,7 +35,7 @@ module Skunk
 
       # :reek:UtilityFunction
       def base_url
-        ENV["SHARE_URL"] || DEFAULT_URL
+        ENV['SHARE_URL'] || DEFAULT_URL
       end
 
       def json_summary
@@ -62,15 +62,15 @@ module Skunk
 
       # :reek:UtilityFunction
       def not_sharing?
-        ENV["SHARE"] != "true" && ENV["SHARE_URL"].to_s == ""
+        ENV['SHARE'] != 'true' && ENV['SHARE_URL'].to_s == ''
       end
 
       def payload
         JSON.generate(
-          "entries" => json_results,
-          "summary" => json_summary,
-          "options" => {
-            "compare" => "false"
+          'entries' => json_results,
+          'summary' => json_summary,
+          'options' => {
+            'compare' => 'false'
           }
         )
       end
@@ -81,7 +81,7 @@ module Skunk
         req.body = payload
 
         http = Net::HTTP.new(url.hostname, url.port)
-        if url.scheme == "https"
+        if url.scheme == 'https'
           http.use_ssl = true
           http.ssl_version = :TLSv1_2
         end
@@ -92,7 +92,7 @@ module Skunk
       end
 
       def url
-        URI(File.join(base_url, "reports"))
+        URI(File.join(base_url, 'reports'))
       end
     end
   end

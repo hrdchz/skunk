@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "rubycritic/core/analysed_module"
+require 'rubycritic/core/analysed_module'
 
 module RubyCritic
   # Monkey-patches RubyCritic::AnalysedModule to add a skunk_score method

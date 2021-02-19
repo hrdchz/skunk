@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require "rubycritic/commands/compare"
-require "skunk/rubycritic/analysed_modules_collection"
-require "skunk/cli/commands/output"
-require "skunk/cli/commands/shareable"
-require "skunk/cli/commands/compare_score"
+require 'rubycritic/commands/compare'
+require 'skunk/rubycritic/analysed_modules_collection'
+require 'skunk/cli/commands/output'
+require 'skunk/cli/commands/shareable'
+require 'skunk/cli/commands/compare_score'
 
 # nodoc #
 module Skunk
@@ -53,7 +53,7 @@ module Skunk
           ).message
 
           Skunk::Command::Output.create_directory(::RubyCritic::Config.compare_root_directory)
-          File.open(build_details_path, "w") { |file| file.write(details) }
+          File.open(build_details_path, 'w') { |file| file.write(details) }
           puts details
         end
 

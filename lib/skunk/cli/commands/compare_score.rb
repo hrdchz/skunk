@@ -26,11 +26,11 @@ module Skunk
         end
 
         def score_evolution_appreciation
-          @feature_branch_score > @base_branch_score ? "worse" : "better"
+          @feature_branch_score > @base_branch_score ? 'worse' : 'better'
         end
 
         def score_evolution
-          return "Infinitely" if @base_branch_score.zero?
+          return 'Infinitely' if @base_branch_score.zero?
 
           precentage = (100 * (@base_branch_score - @feature_branch_score) / @base_branch_score)
           "#{precentage.round(0).abs}%"

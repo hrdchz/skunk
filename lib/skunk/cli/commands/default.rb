@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require "rubycritic/commands/default"
-require "rubycritic/analysers_runner"
-require "rubycritic/revision_comparator"
-require "rubycritic/reporter"
+require 'rubycritic/commands/default'
+require 'rubycritic/analysers_runner'
+require 'rubycritic/revision_comparator'
+require 'rubycritic/reporter'
 
-require "skunk/cli/commands/base"
-require "skunk/cli/commands/shareable"
-require "skunk/cli/commands/status_reporter"
+require 'skunk/cli/commands/base'
+require 'skunk/cli/commands/shareable'
+require 'skunk/cli/commands/status_reporter'
 
 module Skunk
   module Cli

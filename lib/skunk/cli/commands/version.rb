@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "rubycritic/commands/version"
+require 'rubycritic/commands/version'
 
 # nodoc #
 module Skunk

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "erb"
-require "rubycritic/commands/status_reporter"
-require "terminal-table"
+require 'erb'
+require 'rubycritic/commands/status_reporter'
+require 'terminal-table'
 
 module Skunk
   module Command
@@ -14,15 +14,15 @@ module Skunk
       HEADINGS_WITHOUT_FILE = HEADINGS - %w[file]
       HEADINGS_WITHOUT_FILE_WIDTH = HEADINGS_WITHOUT_FILE.size * 17 # padding
 
-      TEMPLATE = ERB.new(<<-TEMPL
-<%= _ttable %>\n
-SkunkScore Total: <%= total_skunk_score %>
-Modules Analysed: <%= analysed_modules_count %>
-SkunkScore Average: <%= skunk_score_average %>
-<% if worst %>Worst SkunkScore: <%= worst.skunk_score %> (<%= worst.pathname %>)<% end %>
-
-Generated with Skunk v<%= Skunk::VERSION %>
-TEMPL
+      TEMPLATE = ERB.new(<<~TEMPL
+                <%= _ttable %>\n
+                SkunkScore Total: <%= total_skunk_score %>
+                Modules Analysed: <%= analysed_modules_count %>
+                SkunkScore Average: <%= skunk_score_average %>
+                <% if worst %>Worst SkunkScore: <%= worst.skunk_score %> (<%= worst.pathname %>)<% end %>
+        #{'        '}
+                Generated with Skunk v<%= Skunk::VERSION %>
+      TEMPL
                         )
 
       # Returns a status message with a table of all analysed_modules and
@@ -44,7 +44,7 @@ TEMPL
       def non_test_modules
         @non_test_modules ||= analysed_modules.reject do |a_module|
           module_path = a_module.pathname.dirname.to_s
-          module_path.start_with?("test", "spec") || module_path.end_with?("test", "spec")
+          module_path.start_with?('test', 'spec') || module_path.end_with?('test', 'spec')
         end
       end
 

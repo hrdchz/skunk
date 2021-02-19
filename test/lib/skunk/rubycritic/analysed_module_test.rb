@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require 'test_helper'
 
-require "rubycritic/analysers_runner"
-require "skunk/rubycritic/analysed_module"
+require 'rubycritic/analysers_runner'
+require 'skunk/rubycritic/analysed_module'
 
 describe RubyCritic::AnalysedModule do
-  let(:paths) { "samples/rubycritic" }
+  let(:paths) { 'samples/rubycritic' }
 
   before do
     capture_output_streams do
@@ -17,37 +17,37 @@ describe RubyCritic::AnalysedModule do
     end
   end
 
-  describe "#skunk_score" do
+  describe '#skunk_score' do
     around do |example|
       @analysed_module.stub(:coverage, coverage) do
         example.call
       end
     end
 
-    context "when there is no test coverage" do
+    context 'when there is no test coverage' do
       let(:coverage) { 0 }
 
-      it "should be 99.32" do
+      it 'should be 99.32' do
         @analysed_module.stub(:churn, 1) do
           _(@analysed_module.skunk_score).must_equal 58.88
         end
       end
     end
 
-    context "when there is near-perfect code coverage" do
+    context 'when there is near-perfect code coverage' do
       let(:coverage) { 95 }
 
-      it "should be penalized slightly" do
+      it 'should be penalized slightly' do
         @analysed_module.stub(:churn, 1) do
           _(@analysed_module.skunk_score).must_equal 2.94
         end
       end
     end
 
-    context "when there is perfect code coverage" do
+    context 'when there is perfect code coverage' do
       let(:coverage) { 100 }
 
-      it "should not be penalized" do
+      it 'should not be penalized' do
         @analysed_module.stub(:churn, 1) do
           _(@analysed_module.skunk_score).must_equal 0.59
         end
@@ -55,10 +55,10 @@ describe RubyCritic::AnalysedModule do
     end
   end
 
-  describe "#to_hash" do
+  describe '#to_hash' do
     let(:result) do
       {
-        file: "samples/rubycritic/analysed_module.rb",
+        file: 'samples/rubycritic/analysed_module.rb',
         skunk_score: 58.88,
         churn_times_cost: 2.36,
         churn: 4,
@@ -67,7 +67,7 @@ describe RubyCritic::AnalysedModule do
       }
     end
 
-    it "returns a hash with all the attributes and values" do
+    it 'returns a hash with all the attributes and values' do
       _(@analysed_module.to_hash).must_equal result
     end
   end

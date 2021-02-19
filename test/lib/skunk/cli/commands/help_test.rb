@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require 'test_helper'
 
-require "skunk/cli/commands/help"
-require "skunk/cli/options"
+require 'skunk/cli/commands/help'
+require 'skunk/cli/options'
 
 describe Skunk::Cli::Command::Help do
-  describe "#execute" do
+  describe '#execute' do
     MSG = <<~HELP
       Usage: skunk [options] [paths]
           -b, --branch BRANCH              Set branch to compare
@@ -15,8 +15,8 @@ describe Skunk::Cli::Command::Help do
           -h, --help                       Show this message
     HELP
 
-    it "outputs the right help message" do
-      options = ["--help"]
+    it 'outputs the right help message' do
+      options = ['--help']
       opts = Skunk::Cli::Options.new(options).parse
       subject = Skunk::Cli::Command::Help.new(opts.to_h)
 

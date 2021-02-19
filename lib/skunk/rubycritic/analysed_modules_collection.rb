@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "rubycritic/core/analysed_modules_collection"
+require 'rubycritic/core/analysed_modules_collection'
 
 module RubyCritic
   # nodoc #
