@@ -39,7 +39,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "rubycritic", ">= 4.5.2", "< 5.0"
-  spec.add_dependency "terminal-table", "~> 1.8.0"
+  spec.add_dependency "terminal-table", "~> 3.0"
 
   spec.add_development_dependency "byebug", "~> 11"
   spec.add_development_dependency "codecov", "~> 0.1.16"
